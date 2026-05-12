@@ -1,0 +1,13 @@
+target,label,algorithm,model_path,init_num_particles,final_particles,transmission,transmission_percent,episode_reward,final_output,pretrained_model_path,fine_tuned_model_path,fine_tuning_timesteps
+simple_sbend,before_finetune,SAC,models/sac_beamline.zip,1000,432,0.432,43.2,5.330624311601102,final_WP,,,
+simple_sbend,before_finetune,SAC,models/sac_beamline.zip,100000,47263,0.47263,47.263,5.5932396808714175,final_WP,,,
+simple_sbend,after_finetune,SAC,models/generalization_finetuned/simple_sbend/sac_simple_sbend_finetuned_10000.zip,1000,289,0.289,28.9,6.6957957682775735,final_WP,models/sac_beamline.zip,models/generalization_finetuned/simple_sbend/sac_simple_sbend_finetuned_10000.zip,10000.0
+simple_sbend,after_finetune,SAC,models/generalization_finetuned/simple_sbend/sac_simple_sbend_finetuned_10000.zip,100000,60118,0.60118,60.118,6.709699275316387,final_WP,models/sac_beamline.zip,models/generalization_finetuned/simple_sbend/sac_simple_sbend_finetuned_10000.zip,10000.0
+simple_sbend,before_finetune,PPO,models/ppo_beamline.zip,1000,1,0.001,0.1,4.038711162581655,final_WP,,,
+simple_sbend,before_finetune,PPO,models/ppo_beamline.zip,100000,45,0.00045,0.045,3.6294454042971527,final_WP,,,
+simple_sbend,after_finetune,PPO,models/generalization_finetuned/simple_sbend/ppo_simple_sbend_finetuned_10000.zip,1000,219,0.219,21.9,5.039220402482125,final_WP,models/ppo_beamline.zip,models/generalization_finetuned/simple_sbend/ppo_simple_sbend_finetuned_10000.zip,10000.0
+simple_sbend,after_finetune,PPO,models/generalization_finetuned/simple_sbend/ppo_simple_sbend_finetuned_10000.zip,100000,21314,0.21314,21.314,4.754643038354681,final_WP,models/ppo_beamline.zip,models/generalization_finetuned/simple_sbend/ppo_simple_sbend_finetuned_10000.zip,10000.0
+simple_sbend,before_finetune,TD3,models/td3_beamline.zip,1000,231,0.231,23.1,4.299056726497179,final_WP,,,
+simple_sbend,before_finetune,TD3,models/td3_beamline.zip,100000,20898,0.20898,20.898,4.534770884539023,final_WP,,,
+simple_sbend,after_finetune,TD3,models/generalization_finetuned/simple_sbend/td3_simple_sbend_finetuned_10000.zip,1000,303,0.303,30.3,6.679764424550458,final_WP,models/td3_beamline.zip,models/generalization_finetuned/simple_sbend/td3_simple_sbend_finetuned_10000.zip,10000.0
+simple_sbend,after_finetune,TD3,models/generalization_finetuned/simple_sbend/td3_simple_sbend_finetuned_10000.zip,100000,25240,0.2524,25.240000000000002,6.611070122283012,final_WP,models/td3_beamline.zip,models/generalization_finetuned/simple_sbend/td3_simple_sbend_finetuned_10000.zip,10000.0

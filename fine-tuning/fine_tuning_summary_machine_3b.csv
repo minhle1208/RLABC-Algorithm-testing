@@ -1,0 +1,13 @@
+target,label,algorithm,model_path,init_num_particles,final_particles,transmission,transmission_percent,episode_reward,final_output,pretrained_model_path,fine_tuned_model_path,fine_tuning_timesteps
+machine_3b,before_finetune,SAC,models/sac_beamline.zip,1000,0,0.0,0.0,-0.9970370305242863,WQL14_1,,,
+machine_3b,before_finetune,SAC,models/sac_beamline.zip,100000,0,0.0,0.0,-0.9970370305242863,WQL14_1,,,
+machine_3b,after_finetune,SAC,models/generalization_finetuned/machine_3b/sac_machine_3b_finetuned_10000.zip,1000,21,0.021,2.1,7.403088114635407,final_WP,models/sac_beamline.zip,models/generalization_finetuned/machine_3b/sac_machine_3b_finetuned_10000.zip,10000.0
+machine_3b,after_finetune,SAC,models/generalization_finetuned/machine_3b/sac_machine_3b_finetuned_10000.zip,100000,486,0.00486,0.486,8.87969527253283,final_WP,models/sac_beamline.zip,models/generalization_finetuned/machine_3b/sac_machine_3b_finetuned_10000.zip,10000.0
+machine_3b,before_finetune,PPO,models/ppo_beamline.zip,1000,0,0.0,0.0,-0.9970370305242863,WQL14_1,,,
+machine_3b,before_finetune,PPO,models/ppo_beamline.zip,100000,0,0.0,0.0,-0.9970370305242863,WQL14_1,,,
+machine_3b,after_finetune,PPO,models/generalization_finetuned/machine_3b/ppo_machine_3b_finetuned_10000.zip,1000,0,0.0,0.0,-0.9970370305242863,WQL14_1,models/ppo_beamline.zip,models/generalization_finetuned/machine_3b/ppo_machine_3b_finetuned_10000.zip,10000.0
+machine_3b,after_finetune,PPO,models/generalization_finetuned/machine_3b/ppo_machine_3b_finetuned_10000.zip,100000,0,0.0,0.0,-0.9970370305242863,WQL14_1,models/ppo_beamline.zip,models/generalization_finetuned/machine_3b/ppo_machine_3b_finetuned_10000.zip,10000.0
+machine_3b,before_finetune,TD3,models/td3_beamline.zip,1000,0,0.0,0.0,-0.9970370305242863,WQL14_1,,,
+machine_3b,before_finetune,TD3,models/td3_beamline.zip,100000,0,0.0,0.0,-0.9970370305242863,WQL14_1,,,
+machine_3b,after_finetune,TD3,models/generalization_finetuned/machine_3b/td3_machine_3b_finetuned_10000.zip,1000,0,0.0,0.0,4.546059676107583,final_WP,models/td3_beamline.zip,models/generalization_finetuned/machine_3b/td3_machine_3b_finetuned_10000.zip,10000.0
+machine_3b,after_finetune,TD3,models/generalization_finetuned/machine_3b/td3_machine_3b_finetuned_10000.zip,100000,0,0.0,0.0,2.9545570712321996,final_WP,models/td3_beamline.zip,models/generalization_finetuned/machine_3b/td3_machine_3b_finetuned_10000.zip,10000.0
