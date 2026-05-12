@@ -1,0 +1,76 @@
+! simple_sbend.lte
+! S-bend FODO transport beamline for RL algorithm benchmarking
+!
+! Design:
+!   - 6 quadrupoles (QF1/QD1 injection, QF2/QD2 in S-bend, QF3/QD3 extraction)
+!   - 2 SBEND dipoles forming a ±22.5° (±π/8 rad) S-bend
+!   - Tight 10 mm exit aperture the agent must focus through
+!   - 400 MeV/c positron beam, same as main VEPP-5 beamline
+!   - Optical length ≈ 5.4 m
+!
+! Tunable parameters:
+!   6 quads × 3 (K1, HKICK, VKICK) = 18
+!   2 dipoles × 1 (FSE)             =  2
+!   ─────────────────────────────── = 20 total
+!
+! This is the recommended beamline for algorithm/seed benchmarking:
+!   - Less trivial than the pure FODO (dispersion from the S-bend)
+!   - Much faster to train than the 37-parameter VEPP-5 beamline
+
+q: charge, total=5.4e-10
+
+! -----------------------------------------------------------------------
+! Apertures (MAXAMP elements have zero length in Elegant)
+! -----------------------------------------------------------------------
+AP_ENTRY: MAXAMP, X_MAX=0.025, Y_MAX=0.025, ELLIPTICAL=1
+AP_BEND:  MAXAMP, X_MAX=0.025, Y_MAX=0.015, ELLIPTICAL=1
+AP_STD:   MAXAMP, X_MAX=0.020, Y_MAX=0.020, ELLIPTICAL=1
+AP_TIGHT: MAXAMP, X_MAX=0.010, Y_MAX=0.010, ELLIPTICAL=1
+
+! -----------------------------------------------------------------------
+! Quadrupoles — all K1/HKICK/VKICK set to 0.0 (RL agent starts from scratch)
+! -----------------------------------------------------------------------
+QF1: QUAD, L=0.15, K1=0.0, HKICK=0.0, VKICK=0.0
+QD1: QUAD, L=0.15, K1=0.0, HKICK=0.0, VKICK=0.0
+QF2: QUAD, L=0.15, K1=0.0, HKICK=0.0, VKICK=0.0
+QD2: QUAD, L=0.15, K1=0.0, HKICK=0.0, VKICK=0.0
+QF3: QUAD, L=0.15, K1=0.0, HKICK=0.0, VKICK=0.0
+QD3: QUAD, L=0.15, K1=0.0, HKICK=0.0, VKICK=0.0
+
+! -----------------------------------------------------------------------
+! Dipoles — S-bend: BM1 deflects +22.5 deg, BM2 returns -22.5 deg
+!   Beam exits parallel to its original direction, displaced +X
+!   Magnetic rigidity at 400 MeV/c: Bρ ≈ 1.334 T·m
+!   Bending radius R = L/|angle| = 0.60/0.3927 ≈ 1.53 m
+!   Required dipole field B = Bρ/R ≈ 0.87 T  (achievable)
+! -----------------------------------------------------------------------
+BM1: SBEND, L=0.60, ANGLE=+0.3927, FSE=0.0
+BM2: SBEND, L=0.60, ANGLE=-0.3927, FSE=0.0
+
+! -----------------------------------------------------------------------
+! Drift spaces
+! -----------------------------------------------------------------------
+DR_A: DRIFT, L=0.50
+DR_B: DRIFT, L=0.30
+DR_C: DRIFT, L=0.40
+DR_D: DRIFT, L=0.20
+
+! -----------------------------------------------------------------------
+! Beamline sections
+!
+!  s=0                                                            s≈5.4m
+!  ┌──────────────────────────────────────────────────────────────────┐
+!  │ SECTION 1  │       S-BEND SECTION          │    SECTION 3       │
+!  │ (straight) │  BM1(+22.5°)   BM2(-22.5°)   │    (straight)      │
+!  │ QF1 QD1    │  QF2    QD2                   │    QF3  QD3  TIGHT │
+!  └──────────────────────────────────────────────────────────────────┘
+!
+! Floor plan (top view):  beam exits displaced ~+0.81 m in X
+!                         while remaining parallel to initial direction
+! -----------------------------------------------------------------------
+
+SEC1: LINE=(AP_ENTRY, QF1, DR_A, AP_STD, QD1, DR_B)
+SBEND: LINE=(AP_BEND, BM1, DR_B, AP_STD, QF2, DR_A, AP_STD, QD2, DR_B, AP_BEND, BM2)
+SEC3: LINE=(DR_B, AP_STD, QF3, DR_A, AP_STD, QD3, DR_C, AP_TIGHT, DR_D)
+
+machine: LINE=(q, SEC1, SBEND, SEC3)

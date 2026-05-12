@@ -1,0 +1,56 @@
+
+! simple_fodo_track.ele
+! Elegant command file for the simple FODO benchmark beamline.
+!
+! The framework copies this file to simple_fodo_track_<seed>.ele and
+! automatically rewrites the lattice filename and results paths for each
+! training seed.  Do NOT hard-code seed numbers here.
+!
+! Beam parameters are intentionally identical to the VEPP-5 test beamline
+! (400 MeV/c, high emittance) so that results are directly comparable.
+
+&run_setup
+    lattice = elegant_input.lte
+    use_beamline = machine
+    p_central_mev = 400.0
+    sigma   = results/%s.sig
+    centroid = results/%s.cen
+    magnets  = results/beamline.mag
+    default_order = 2
+&end
+
+&twiss_output
+    filename = results/twiss.twi
+    matched  = 0
+    beta_x   = 2.0
+    beta_y   = 2.0
+&end
+
+&floor_coordinates
+    filename         = results/xyz.sdds
+    include_vertices = 0
+    vertices_only    = 0
+    magnet_centers   = 0
+&end
+
+&run_control
+    n_steps = 1
+&end
+
+&bunched_beam
+    n_particles_per_bunch = 1000
+    emit_nx = 2000.0e-6
+    emit_ny = 2000.0e-6
+
+    beta_x = 2.0
+    beta_y = 2.0
+
+    sigma_s  = 5.0e-3
+    sigma_dp = 4e-2
+
+    distribution_type[0]   = 3*"gaussian",
+    distribution_cutoff[0] = 3*3,
+&end
+
+&track
+&end
