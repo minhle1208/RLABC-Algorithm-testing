@@ -1,0 +1,4 @@
+algorithm,n_valid_configs,best_rank_after_reeval,best_reevaluated_particles,best_reevaluated_transmission,best_reevaluated_transmission_percent,mean_topk_reevaluated_particles,mean_topk_reevaluated_transmission,mean_topk_reevaluated_transmission_percent,std_topk_reevaluated_transmission_percent,min_topk_reevaluated_transmission_percent,max_topk_reevaluated_transmission_percent,mean_training_transmission_percent,best_training_transmission_percent
+SAC,5,4,58548,0.58548,58.548,58143.8,0.5814380000000001,58.1438,0.21365710847055996,57.933,58.548,61.7,61.7
+TD3,5,1,54189,0.54189,54.189,53642.2,0.536422,53.6422,0.41727420241371255,53.169999999999995,54.189,53.220000000000006,53.7
+PPO,5,2,49799,0.49799,49.799,49738.4,0.497384,49.7384,0.05287192071411722,49.643,49.799,50.31999999999999,50.4

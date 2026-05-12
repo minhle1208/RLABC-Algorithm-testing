@@ -1,0 +1,4 @@
+algorithm,csv_path,n_particles,final_output_file,final_particles,reevaluated_transmission,reevaluated_transmission_percent,training_best_particles,training_best_transmission,training_best_transmission_percent,training_reward,valid,error
+SAC,big_beamline_Orig.csv,100000,final_WP,58149,0.58149,58.148999999999994,617.0,0.617,61.7,0.617,True,
+PPO,big_beamline_Orig_ppo.csv,100000,final_WP,49730,0.4973,49.730000000000004,504.0,0.504,50.4,0.5030019801980198,True,
+TD3,big_beamline_Orig_ppo_td3.csv,100000,final_WP,54189,0.54189,54.189,537.0,0.537,53.7,0.537,True,
